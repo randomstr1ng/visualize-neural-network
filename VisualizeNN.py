@@ -98,8 +98,9 @@ class Layer():
             neuron.draw( self.neuron_radius, id=j+1 )
             if self.previous_layer:
                 for previous_layer_neuron in self.previous_layer.neurons:
-                    self.__line_between_two_neurons(neuron, previous_layer_neuron, weights[i,j], textoverlaphandler)
-                    i=i+1
+                    if weights.shape[1] > 1:
+                        self.__line_between_two_neurons(neuron, previous_layer_neuron, weights[i,j], textoverlaphandler)
+                        i=i+1
             j=j+1
         
         # write Text
